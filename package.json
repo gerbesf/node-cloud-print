@@ -27,7 +27,7 @@
 	},
     "dependencies":
     {
-        "googleapis": "git+ssh://git@github.com:k13-engineering/google-api-nodejs-client.git#experimental"
+        "googleapis": "git+ssh://git@github.com:k13-engineering/google-api-nodejs-client.git#npm"
     },
 	"devDependencies": {
 		"grunt": "^0.4.5",
