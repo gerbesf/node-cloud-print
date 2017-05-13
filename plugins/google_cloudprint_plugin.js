@@ -6,7 +6,7 @@
     'use strict';
 
     var google = require('googleapis');
-    var cloud_print = google.cloudprint('beta');
+    var cloud_print = google.cloudprint('v1beta1');
 
     function _flow(params, callback, context, action) {
         if (!context.oauth2_client) {
@@ -32,6 +32,7 @@
                                         callback(err, {result: response, tokens: tokens});
                                     } else {
                                         if (response.message) {
+                                            console.error("response = " + JSON.stringify(response));
                                             callback(new Error(response.message), response);
                                         } else {
                                             callback(new Error('Unknown error'), response);
@@ -93,9 +94,9 @@
             params.renameProperty('tags','tag',[]);
             params.renameProperty('printer_id','printerid',null);
             params.renameProperty('content_type','contentType','url');
-            params.ticket = ticket;
+            params.ticket = JSON.stringify(ticket);
 
-            _flow(params, callback, self, this.cloud_print.jobs.sumbmit);
+            _flow(params, callback, self, this.cloud_print.jobs.submit);
         };
 
     }
@@ -122,5 +123,3 @@
     );
 
 })();
-
-
